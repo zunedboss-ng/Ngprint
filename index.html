@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NG PRINT - Professional Printing Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .id-card {
+            perspective: 1000px;
+            transition: transform 0.3s ease;
+        }
+        .id-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        .filter-btn:hover:not(.active) {
+            background-color: #e5e7eb;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-print text-blue-600 text-2xl"></i>
+                    <h1 class="text-2xl font-bold text-gray-900">NG PRINT</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition font-semibold">Home</a>
+                    <a href="#categories" class="text-gray-700 hover:text-blue-600 transition font-semibold">Categories</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition font-semibold">Contact</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ID Card Section -->
+    <section class="bg-gradient-to-br from-blue-600 to-blue-800 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-white text-3xl font-bold mb-12">Welcome to NG PRINT</h2>
+            <div class="flex justify-center">
+                <div class="id-card bg-white rounded-2xl shadow-2xl overflow-hidden max-w-md w-full">
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 h-24 flex items-center justify-center">
+                        <i class="fas fa-print text-white text-5xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-center mb-6">
+                            <img src="https://via.placeholder.com/120x120.jpeg" alt="Profile" class="w-24 h-24 rounded-full border-4 border-blue-600 object-cover">
+                        </div>
+                        <div class="text-center border-t pt-4">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-1">SHAYAN SHOP</h3>
+                            <p class="text-gray-600 font-semibold mb-4">Professional Printing Services</p>
+                            <div class="space-y-2 text-sm text-gray-700">
+                                <p class="flex items-center justify-center space-x-2">
+                                    <i class="fas fa-phone text-blue-600"></i>
+                                    <span>+234 XXX XXXX XXX</span>
+                                </p>
+                                <p class="flex items-center justify-center space-x-2">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                    <span>info@ngprint.com</span>
+                                </p>
+                                <p class="flex items-center justify-center space-x-2">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                    <span>Lagos, Nigeria</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter Section -->
+    <section id="categories" class="py-8 px-4 bg-white border-b">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Shop by Category</h2>
+            <div class="flex flex-wrap justify-center gap-3">
+                <button class="filter-btn active px-6 py-2 rounded-full font-semibold border-2 border-blue-600 bg-blue-600 text-white" data-filter="all">
+                    All Products
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full font-semibold border-2 border-gray-300 text-gray-700" data-filter="electronics">
+                    <i class="fas fa-laptop mr-2"></i>Electronics
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full font-semibold border-2 border-gray-300 text-gray-700" data-filter="accessories">
+                    <i class="fas fa-ring mr-2"></i>Accessories
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full font-semibold border-2 border-gray-300 text-gray-700" data-filter="clothing">
+                    <i class="fas fa-shirt mr-2"></i>Clothing
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full font-semibold border-2 border-gray-300 text-gray-700" data-filter="home">
+                    <i class="fas fa-home mr-2"></i>Home Decor
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Gallery -->
+    <section id="products" class="py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">Featured Products</h2>
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 px-4 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Get in Touch</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow p-6 text-center">
+                    <i class="fas fa-phone text-blue-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Call Us</h3>
+                    <p class="text-gray-600">+234 XXX XXXX XXX</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 text-center">
+                    <i class="fas fa-envelope text-blue-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Email Us</h3>
+                    <p class="text-gray-600">info@ngprint.com</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 text-center">
+                    <i class="fas fa-map-marker-alt text-blue-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Visit Us</h3>
+                    <p class="text-gray-600">Lagos, Nigeria</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">NG PRINT</h3>
+                    <p class="text-gray-400">Professional printing solutions for all your needs.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="text-gray-400 space-y-2">
+                        <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#categories" class="hover:text-white transition">Categories</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 NG PRINT | 42 Trade Fair Complex, Lagos, Nigeria | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
