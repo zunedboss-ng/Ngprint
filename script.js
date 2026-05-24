@@ -1,105 +1,47 @@
-// Product Data
+// NG Print - Product Data
 const products = [
     {
         id: 1,
-        title: "Wireless Headphones",
-        price: "₦15,999",
-        category: "electronics",
-        image: "https://via.placeholder.com/300x300.jpeg"
+        title: "Premium School ID Card",
+        category: "printing",
+        image: "https://images.unsplash.com/photo-1598257006458-087169a1f08d?q=80&w=500&auto=format&fit=crop"
     },
     {
         id: 2,
-        title: "USB-C Cable",
-        price: "₦2,499",
-        category: "accessories",
-        image: "https://via.placeholder.com/300x300.jpeg"
+        title: "Custom School Tie",
+        category: "uniform",
+        image: "https://images.unsplash.com/photo-1589756823853-eed746dfde70?q=80&w=500&auto=format&fit=crop"
     },
     {
         id: 3,
-        title: "Premium T-Shirt",
-        price: "₦5,999",
-        category: "clothing",
-        image: "https://via.placeholder.com/300x300.jpeg"
+        title: "Custom School Belt",
+        category: "uniform",
+        image: "https://images.unsplash.com/photo-1624222247344-550fb8ef986c?q=80&w=500&auto=format&fit=crop"
     },
     {
         id: 4,
-        title: "Desk Lamp",
-        price: "₦8,999",
-        category: "home",
-        image: "https://via.placeholder.com/300x300.jpeg"
-    },
-    {
-        id: 5,
-        title: "Webcam HD",
-        price: "₦12,499",
-        category: "electronics",
-        image: "https://via.placeholder.com/300x300.jpeg"
-    },
-    {
-        id: 6,
-        title: "Screen Protector",
-        price: "₦1,999",
+        title: "Customized Key Ring",
         category: "accessories",
-        image: "https://via.placeholder.com/300x300.jpeg"
-    },
-    {
-        id: 7,
-        title: "Casual Jeans",
-        price: "₦9,999",
-        category: "clothing",
-        image: "https://via.placeholder.com/300x300.jpeg"
-    },
-    {
-        id: 8,
-        title: "Wall Clock",
-        price: "₦4,499",
-        category: "home",
-        image: "https://via.placeholder.com/300x300.jpeg"
-    },
-    {
-        id: 9,
-        title: "Portable Speaker",
-        price: "₦11,999",
-        category: "electronics",
-        image: "https://via.placeholder.com/300x300.jpeg"
-    },
-    {
-        id: 10,
-        title: "Phone Stand",
-        price: "₦3,999",
-        category: "accessories",
-        image: "https://via.placeholder.com/300x300.jpeg"
-    },
-    {
-        id: 11,
-        title: "Hoodie",
-        price: "₦7,999",
-        category: "clothing",
-        image: "https://via.placeholder.com/300x300.jpeg"
-    },
-    {
-        id: 12,
-        title: "Throw Pillow",
-        price: "₦6,499",
-        category: "home",
-        image: "https://via.placeholder.com/300x300.jpeg"
+        image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=500&auto=format&fit=crop"
     }
 ];
 
-// WhatsApp Business Number (Update with your actual number)
-const WHATSAPP_NUMBER = "2348012345678";
+// WhatsApp Business Number (NG COMPUTER PANJIPARA)
+const WHATSAPP_NUMBER = "919851579961";
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
     renderProducts('all');
     setupFilterButtons();
-    setupMobileMenu();
 });
 
 // Render products based on category
 function renderProducts(category) {
     const productGrid = document.getElementById('productGrid');
     
+    // Agar HTML me id="productGrid" nahi hai toh code crash hone se bachaye
+    if (!productGrid) return; 
+
     let filteredProducts = products;
     if (category !== 'all') {
         filteredProducts = products.filter(product => product.category === category);
@@ -109,40 +51,38 @@ function renderProducts(category) {
 
     filteredProducts.forEach(product => {
         const productCard = createProductCard(product);
-        productCard.classList.add('fade-in');
         productGrid.appendChild(productCard);
     });
 }
 
-// Create individual product card
+// Create individual product card (Matching Tailwind CSS HTML Design)
 function createProductCard(product) {
     const card = document.createElement('div');
-    card.className = 'product-card bg-white rounded-lg shadow-md overflow-hidden';
+    card.className = 'bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition duration-300 flex flex-col fade-in';
     
     const categoryLabel = {
-        electronics: '📱 Electronics',
-        accessories: '🎧 Accessories',
-        clothing: '👕 Clothing',
-        home: '🏠 Home Decor'
+        printing: '🪪 ID Printing',
+        uniform: '👔 Uniform',
+        accessories: '🔑 Accessories'
     };
 
     card.innerHTML = `
-        <div class="relative overflow-hidden bg-gray-200 h-48">
-            <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover hover:scale-110 transition duration-300">
-            <div class="absolute top-2 right-2 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                ${categoryLabel[product.category]}
-            </div>
+        <div class="h-56 bg-slate-100 overflow-hidden relative">
+            <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover">
         </div>
-        <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">${product.title}</h3>
-            <div class="flex justify-between items-center mb-4">
-                <span class="text-2xl font-bold text-blue-600">${product.price}</span>
+        <div class="p-5 flex flex-col flex-grow justify-between">
+            <div>
+                <span class="inline-block bg-teal-50 text-teal-700 text-xs font-bold px-2.5 py-1 rounded-full mb-3">${categoryLabel[product.category]}</span>
+                <h3 class="text-lg font-bold text-slate-900 mb-1">${product.title}</h3>
             </div>
-            <button class="whatsapp-btn w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center space-x-2"
-                    onclick="sendWhatsAppMessage('${product.title}', '${product.price}')">
-                <i class="fab fa-whatsapp"></i>
-                <span>Order on WhatsApp</span>
-            </button>
+            <div>
+                <div class="border-t border-slate-100 pt-4 mt-2">
+                    <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow-sm"
+                            onclick="sendWhatsAppMessage('${product.title}')">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Contact WhatsApp
+                    </button>
+                </div>
+            </div>
         </div>
     `;
 
@@ -150,8 +90,8 @@ function createProductCard(product) {
 }
 
 // Send WhatsApp message
-function sendWhatsAppMessage(productTitle, productPrice) {
-    const message = `Hi, I'm interested in purchasing: ${productTitle} (${productPrice})`;
+function sendWhatsAppMessage(productTitle) {
+    const message = `Hi NG PRINT, I am interested in ordering: ${productTitle}.`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
     window.open(whatsappURL, '_blank');
@@ -163,35 +103,21 @@ function setupFilterButtons() {
     
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Remove active class from all buttons
+            // Remove active style from all
             filterButtons.forEach(btn => {
-                btn.classList.remove('active');
-                btn.classList.remove('bg-blue-600', 'text-white');
-                btn.classList.add('bg-white', 'text-gray-700');
+                btn.classList.remove('bg-emerald-600', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700');
             });
             
-            // Add active class to clicked button
-            this.classList.add('active');
-            this.classList.add('bg-blue-600', 'text-white');
-            this.classList.remove('bg-white', 'text-gray-700');
+            // Add active style to clicked
+            this.classList.add('bg-emerald-600', 'text-white');
+            this.classList.remove('bg-white', 'text-slate-700');
             
             // Filter products
             const filter = this.getAttribute('data-filter');
             renderProducts(filter);
         });
     });
-}
-
-// Setup mobile menu
-function setupMobileMenu() {
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function() {
-            // This is a simple toggle - you can expand this functionality
-            alert('Mobile menu: Home | Categories | Contact');
-        });
-    }
 }
 
 // Smooth scroll for navigation links
