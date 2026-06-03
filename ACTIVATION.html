@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NG Computer - Exam Activation Portal</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Bahar ka scroll roklega */
+      background-color: #f0f4f8; /* Aapke theme se match karta background */
+    }
+    
+    .iframe-container {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      -webkit-overflow-scrolling: touch; /* Apple/iPhone users ke liye smooth scrolling */
+      
+      /* Computer/Laptop ke liye normal 30px upar shift */
+      top: -30px; 
+      height: calc(100% + 30px); 
+    }
+
+    /* MOBILE PHONES KE LIYE CSS (Jab screen 600px se chhoti ho) */
+    @media (max-width: 600px) {
+      .iframe-container {
+        /* Mobile me banner do line ka ho sakta hai, isliye zyada upar shift kiya hai */
+        top: -50px; 
+        height: calc(100% + 50px);
+      }
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="iframe-container">
+    <iframe src="https://script.google.com/macros/s/AKfycbzTsCB9eU3fbGkE0SGq81we8afNP0DNLkMM2wyvNyebyizPIWwV5fWHi04lBk25XxxmNw/exec" scrolling="yes"></iframe>
+  </div>
+
+</body>
+</html>
